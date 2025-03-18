@@ -1,0 +1,1144 @@
+{
+    "rules": [
+        {
+            "id": "DOC04",
+            "name": "missing-doc-resource-file",
+            "description": "\nResource file without documentation.\n\nYou can add documentation to resource file using following syntax::\n\n    *** Settings ***\n    Documentation    Resource file documentation\n\n",
+            "engineId": "robocop",
+            "type": "CODE_SMELL",
+            "cleanCodeAttribute": "CONVENTIONAL",
+            "severity": "MINOR"
+        },
+        {
+            "id": "SPC03",
+            "name": "empty-lines-between-sections",
+            "description": "\nInvalid number of empty lines between sections.\n\nEnsure there is the same number of empty lines between sections for consistency and readability.\n\nIncorrect code example::\n\n    *** Settings ***\n    Documentation    Only one empty line after this section.\n\n    *** Keywords ***\n    Keyword Definition\n        No Operation\n\nCorrect code::\n\n    *** Settings ***\n    Documentation    Only one empty line after this section.\n\n\n    *** Keywords ***\n    Keyword Definition\n        No Operation\n\n",
+            "engineId": "robocop",
+            "type": "CODE_SMELL",
+            "cleanCodeAttribute": "FORMATTED",
+            "severity": "MINOR"
+        },
+        {
+            "id": "DOC01",
+            "name": "missing-doc-keyword",
+            "description": "\nKeyword without documentation.\n\nKeyword documentation is displayed in a tooltip in most code editors,\nso it is recommended to write it for each keyword.\n\nYou can add documentation to keyword using following syntax::\n\n    *** Keywords ***\n    Keyword\n        [Documentation]  Keyword documentation\n        Keyword Step\n        Other Step\n\n",
+            "engineId": "robocop",
+            "type": "CODE_SMELL",
+            "cleanCodeAttribute": "CONVENTIONAL",
+            "severity": "MINOR"
+        },
+        {
+            "id": "NAME02",
+            "name": "wrong-case-in-keyword-name",
+            "description": "\nKeyword name does not follow case convention.\n\nKeyword names need to follow a specific case convention.\nThe convention can be set using ``convention`` parameter and accepts\none of the 2 values: ``each_word_capitalized`` or ``first_word_capitalized``.\n\nBy default, it's configured to ``each_word_capitalized``, which requires each keyword to follow such\nconvention::\n\n    *** Keywords ***\n    Fill Out The Form\n        Provide Shipping Address\n        Provide Payment Method\n        Click 'Next' Button\n        [Teardown]  Log Form Data\n\nYou can also set it to ``first_word_capitalized`` which requires first word to have first letter capital::\n\n    *** Keywords ***\n    Fill out the form\n        Provide shipping address\n        Provide payment method\n        Click 'Next' button\n        [Teardown]  Log form data\n\nThe rule also accepts another parameter ``pattern`` which can be used to configure words\nthat are accepted in the keyword name, even though they violate the case convention.\n\n``pattern`` parameter accepts a regex pattern. For example, configuring it to ``robocop\\.readthedocs\\.io``\nwould make such keyword legal::\n\n    Go To robocop.readthedocs.io Page\n\n",
+            "engineId": "robocop",
+            "type": "CODE_SMELL",
+            "cleanCodeAttribute": "IDENTIFIABLE",
+            "severity": "MINOR"
+        },
+        {
+            "id": "DOC03",
+            "name": "missing-doc-suite",
+            "description": "\nTest suite without documentation.\n\nYou can add documentation to suite using following syntax::\n\n    *** Settings ***\n    Documentation    Suite documentation\n\n",
+            "engineId": "robocop",
+            "type": "CODE_SMELL",
+            "cleanCodeAttribute": "CONVENTIONAL",
+            "severity": "MINOR"
+        },
+        {
+            "id": "NAME04",
+            "name": "underscore-in-keyword-name",
+            "description": "\nUnderscores in keyword name.\n\nYou can replace underscores with spaces.\n\nIncorrect code example::\n\n    keyword_with_underscores\n\nCorrect code::\n\n    Keyword Without Underscores\n\n",
+            "engineId": "robocop",
+            "type": "CODE_SMELL",
+            "cleanCodeAttribute": "IDENTIFIABLE",
+            "severity": "MINOR"
+        },
+        {
+            "id": "DOC02",
+            "name": "missing-doc-test-case",
+            "description": "\nTest case without documentation.\n\nYou can add documentation to test case using following syntax::\n\n    *** Test Cases ***\n    Test\n        [Documentation]  Test documentation\n        Keyword Step\n        Other Step\n\nThe rule by default ignores templated test cases but it can be configured with::\n\n    robocop check --configure missing-doc-test-case.ignore_templated=False\n\nPossible values are: ``Yes`` / ``1`` / ``True`` (default) or ``No`` / ``False`` / ``0``.\n\n",
+            "engineId": "robocop",
+            "type": "CODE_SMELL",
+            "cleanCodeAttribute": "CONVENTIONAL",
+            "severity": "MINOR"
+        },
+        {
+            "id": "NAME07",
+            "name": "not-capitalized-test-case-title",
+            "description": "\nTest case title does not start with capital letter.\n\nIncorrect code example::\n\n    *** Test Cases ***\n    validate user details\n\nCorrect code example::\n\n    *** Test Cases ***\n    Validate user details\n\n",
+            "engineId": "robocop",
+            "type": "CODE_SMELL",
+            "cleanCodeAttribute": "IDENTIFIABLE",
+            "severity": "MINOR"
+        }
+    ],
+    "issues": [
+        {
+            "ruleId": "DOC04",
+            "primaryLocation": {
+                "message": "Missing documentation in resource file",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "endLine": 1,
+                    "endColumn": 1
+                }
+            }
+        },
+        {
+            "ruleId": "SPC03",
+            "primaryLocation": {
+                "message": "Invalid number of empty lines between sections (1/2)",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 4,
+                    "startColumn": 1,
+                    "endLine": 4,
+                    "endColumn": 55
+                }
+            }
+        },
+        {
+            "ruleId": "DOC01",
+            "primaryLocation": {
+                "message": "Missing documentation in 'kw1' keyword",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 6,
+                    "startColumn": 1,
+                    "endLine": 6,
+                    "endColumn": 4
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'kw1' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 6,
+                    "startColumn": 1,
+                    "endLine": 6,
+                    "endColumn": 4
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 8,
+                    "startColumn": 5,
+                    "endLine": 8,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 9,
+                    "startColumn": 5,
+                    "endLine": 9,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 10,
+                    "startColumn": 5,
+                    "endLine": 10,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 11,
+                    "startColumn": 5,
+                    "endLine": 11,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 12,
+                    "startColumn": 5,
+                    "endLine": 12,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 14,
+                    "startColumn": 5,
+                    "endLine": 14,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "DOC01",
+            "primaryLocation": {
+                "message": "Missing documentation in 'keyword2' keyword",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 16,
+                    "startColumn": 1,
+                    "endLine": 16,
+                    "endColumn": 9
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'keyword2' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 16,
+                    "startColumn": 1,
+                    "endLine": 16,
+                    "endColumn": 9
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 18,
+                    "startColumn": 5,
+                    "endLine": 18,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "DOC01",
+            "primaryLocation": {
+                "message": "Missing documentation in 'keyword3' keyword",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 21,
+                    "startColumn": 1,
+                    "endLine": 21,
+                    "endColumn": 9
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'keyword3' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 21,
+                    "startColumn": 1,
+                    "endLine": 21,
+                    "endColumn": 9
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'res kw' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 22,
+                    "startColumn": 5,
+                    "endLine": 22,
+                    "endColumn": 11
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'res2.res kw 2' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 23,
+                    "startColumn": 5,
+                    "endLine": 23,
+                    "endColumn": 18
+                }
+            }
+        },
+        {
+            "ruleId": "DOC01",
+            "primaryLocation": {
+                "message": "Missing documentation in 'kw4' keyword",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 25,
+                    "startColumn": 1,
+                    "endLine": 25,
+                    "endColumn": 4
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'kw4' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 25,
+                    "startColumn": 1,
+                    "endLine": 25,
+                    "endColumn": 4
+                }
+            }
+        },
+        {
+            "ruleId": "DOC01",
+            "primaryLocation": {
+                "message": "Missing documentation in 'kw5' keyword",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 30,
+                    "startColumn": 1,
+                    "endLine": 30,
+                    "endColumn": 4
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'kw5' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 30,
+                    "startColumn": 1,
+                    "endLine": 30,
+                    "endColumn": 4
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'res.kw 2' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 31,
+                    "startColumn": 5,
+                    "endLine": 31,
+                    "endColumn": 13
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'res.kw' does not follow case convention",
+                "filePath": "resources/res01.resource",
+                "textRange": {
+                    "startLine": 32,
+                    "startColumn": 5,
+                    "endLine": 32,
+                    "endColumn": 11
+                }
+            }
+        },
+        {
+            "ruleId": "DOC03",
+            "primaryLocation": {
+                "message": "Missing documentation in suite",
+                "filePath": "resources/__init__.robot",
+                "textRange": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "endLine": 1,
+                    "endColumn": 1
+                }
+            }
+        },
+        {
+            "ruleId": "DOC04",
+            "primaryLocation": {
+                "message": "Missing documentation in resource file",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "endLine": 1,
+                    "endColumn": 1
+                }
+            }
+        },
+        {
+            "ruleId": "SPC03",
+            "primaryLocation": {
+                "message": "Invalid number of empty lines between sections (1/2)",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 3,
+                    "startColumn": 1,
+                    "endLine": 3,
+                    "endColumn": 27
+                }
+            }
+        },
+        {
+            "ruleId": "DOC01",
+            "primaryLocation": {
+                "message": "Missing documentation in 'keyword1' keyword",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 5,
+                    "startColumn": 1,
+                    "endLine": 5,
+                    "endColumn": 9
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'keyword1' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 5,
+                    "startColumn": 1,
+                    "endLine": 5,
+                    "endColumn": 9
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 7,
+                    "startColumn": 5,
+                    "endLine": 7,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 8,
+                    "startColumn": 5,
+                    "endLine": 8,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 9,
+                    "startColumn": 5,
+                    "endLine": 9,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 10,
+                    "startColumn": 5,
+                    "endLine": 10,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 11,
+                    "startColumn": 5,
+                    "endLine": 11,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 12,
+                    "startColumn": 5,
+                    "endLine": 12,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'keyword3' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 14,
+                    "startColumn": 20,
+                    "endLine": 14,
+                    "endColumn": 28
+                }
+            }
+        },
+        {
+            "ruleId": "DOC01",
+            "primaryLocation": {
+                "message": "Missing documentation in 'keyword2' keyword",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 16,
+                    "startColumn": 1,
+                    "endLine": 16,
+                    "endColumn": 9
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'keyword2' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 16,
+                    "startColumn": 1,
+                    "endLine": 16,
+                    "endColumn": 9
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 18,
+                    "startColumn": 5,
+                    "endLine": 18,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "DOC01",
+            "primaryLocation": {
+                "message": "Missing documentation in 'keyword3' keyword",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 20,
+                    "startColumn": 1,
+                    "endLine": 20,
+                    "endColumn": 9
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'keyword3' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 20,
+                    "startColumn": 1,
+                    "endLine": 20,
+                    "endColumn": 9
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'res_kw' does not follow case convention",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 21,
+                    "startColumn": 5,
+                    "endLine": 21,
+                    "endColumn": 11
+                }
+            }
+        },
+        {
+            "ruleId": "NAME04",
+            "primaryLocation": {
+                "message": "Underscores in keyword name 'res_kw'",
+                "filePath": "Sub/resources/res02.resource",
+                "textRange": {
+                    "startLine": 21,
+                    "startColumn": 5,
+                    "endLine": 21,
+                    "endColumn": 11
+                }
+            }
+        },
+        {
+            "ruleId": "DOC03",
+            "primaryLocation": {
+                "message": "Missing documentation in suite",
+                "filePath": "Sub/resources/__init__.robot",
+                "textRange": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "endLine": 1,
+                    "endColumn": 1
+                }
+            }
+        },
+        {
+            "ruleId": "DOC03",
+            "primaryLocation": {
+                "message": "Missing documentation in suite",
+                "filePath": "Sub/suite02.robot",
+                "textRange": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "endLine": 1,
+                    "endColumn": 1
+                }
+            }
+        },
+        {
+            "ruleId": "SPC03",
+            "primaryLocation": {
+                "message": "Invalid number of empty lines between sections (1/2)",
+                "filePath": "Sub/suite02.robot",
+                "textRange": {
+                    "startLine": 4,
+                    "startColumn": 1,
+                    "endLine": 4,
+                    "endColumn": 32
+                }
+            }
+        },
+        {
+            "ruleId": "DOC02",
+            "primaryLocation": {
+                "message": "Missing documentation in 'case01' test case",
+                "filePath": "Sub/suite02.robot",
+                "textRange": {
+                    "startLine": 6,
+                    "startColumn": 1,
+                    "endLine": 6,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME07",
+            "primaryLocation": {
+                "message": "Test case 'case01' title does not start with capital letter",
+                "filePath": "Sub/suite02.robot",
+                "textRange": {
+                    "startLine": 6,
+                    "startColumn": 1,
+                    "endLine": 6,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'my_kw' does not follow case convention",
+                "filePath": "Sub/suite02.robot",
+                "textRange": {
+                    "startLine": 7,
+                    "startColumn": 5,
+                    "endLine": 7,
+                    "endColumn": 10
+                }
+            }
+        },
+        {
+            "ruleId": "NAME04",
+            "primaryLocation": {
+                "message": "Underscores in keyword name 'my_kw'",
+                "filePath": "Sub/suite02.robot",
+                "textRange": {
+                    "startLine": 7,
+                    "startColumn": 5,
+                    "endLine": 7,
+                    "endColumn": 10
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'keyword3' does not follow case convention",
+                "filePath": "Sub/suite02.robot",
+                "textRange": {
+                    "startLine": 8,
+                    "startColumn": 5,
+                    "endLine": 8,
+                    "endColumn": 13
+                }
+            }
+        },
+        {
+            "ruleId": "DOC03",
+            "primaryLocation": {
+                "message": "Missing documentation in suite",
+                "filePath": "Sub/Lib/__init__.robot",
+                "textRange": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "endLine": 1,
+                    "endColumn": 1
+                }
+            }
+        },
+        {
+            "ruleId": "DOC03",
+            "primaryLocation": {
+                "message": "Missing documentation in suite",
+                "filePath": "Sub/__init__.robot",
+                "textRange": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "endLine": 1,
+                    "endColumn": 1
+                }
+            }
+        },
+        {
+            "ruleId": "DOC03",
+            "primaryLocation": {
+                "message": "Missing documentation in suite",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "endLine": 1,
+                    "endColumn": 1
+                }
+            }
+        },
+        {
+            "ruleId": "SPC03",
+            "primaryLocation": {
+                "message": "Invalid number of empty lines between sections (1/2)",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 7,
+                    "startColumn": 1,
+                    "endLine": 7,
+                    "endColumn": 37
+                }
+            }
+        },
+        {
+            "ruleId": "DOC02",
+            "primaryLocation": {
+                "message": "Missing documentation in 'case01' test case",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 9,
+                    "startColumn": 1,
+                    "endLine": 9,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME07",
+            "primaryLocation": {
+                "message": "Test case 'case01' title does not start with capital letter",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 9,
+                    "startColumn": 1,
+                    "endLine": 9,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'keyword2' does not follow case convention",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 11,
+                    "startColumn": 5,
+                    "endLine": 11,
+                    "endColumn": 13
+                }
+            }
+        },
+        {
+            "ruleId": "DOC02",
+            "primaryLocation": {
+                "message": "Missing documentation in 'case02' test case",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 14,
+                    "startColumn": 1,
+                    "endLine": 14,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME07",
+            "primaryLocation": {
+                "message": "Test case 'case02' title does not start with capital letter",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 14,
+                    "startColumn": 1,
+                    "endLine": 14,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 15,
+                    "startColumn": 5,
+                    "endLine": 15,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 16,
+                    "startColumn": 5,
+                    "endLine": 16,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'my_kw' does not follow case convention",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 17,
+                    "startColumn": 5,
+                    "endLine": 17,
+                    "endColumn": 10
+                }
+            }
+        },
+        {
+            "ruleId": "NAME04",
+            "primaryLocation": {
+                "message": "Underscores in keyword name 'my_kw'",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 17,
+                    "startColumn": 5,
+                    "endLine": 17,
+                    "endColumn": 10
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'kw1' does not follow case convention",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 18,
+                    "startColumn": 5,
+                    "endLine": 18,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'after navigate to' does not follow case convention",
+                "filePath": "Sub/Suite01.robot",
+                "textRange": {
+                    "startLine": 19,
+                    "startColumn": 5,
+                    "endLine": 19,
+                    "endColumn": 22
+                }
+            }
+        },
+        {
+            "ruleId": "DOC03",
+            "primaryLocation": {
+                "message": "Missing documentation in suite",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "endLine": 1,
+                    "endColumn": 1
+                }
+            }
+        },
+        {
+            "ruleId": "SPC03",
+            "primaryLocation": {
+                "message": "Invalid number of empty lines between sections (1/2)",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 6,
+                    "startColumn": 1,
+                    "endLine": 6,
+                    "endColumn": 28
+                }
+            }
+        },
+        {
+            "ruleId": "DOC02",
+            "primaryLocation": {
+                "message": "Missing documentation in 'case01' test case",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 8,
+                    "startColumn": 1,
+                    "endLine": 8,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME07",
+            "primaryLocation": {
+                "message": "Test case 'case01' title does not start with capital letter",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 8,
+                    "startColumn": 1,
+                    "endLine": 8,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'res02.keyword2' does not follow case convention",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 10,
+                    "startColumn": 5,
+                    "endLine": 10,
+                    "endColumn": 19
+                }
+            }
+        },
+        {
+            "ruleId": "DOC02",
+            "primaryLocation": {
+                "message": "Missing documentation in 'case02' test case",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 13,
+                    "startColumn": 1,
+                    "endLine": 13,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME07",
+            "primaryLocation": {
+                "message": "Test case 'case02' title does not start with capital letter",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 13,
+                    "startColumn": 1,
+                    "endLine": 13,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 14,
+                    "startColumn": 5,
+                    "endLine": 14,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'log' does not follow case convention",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 15,
+                    "startColumn": 5,
+                    "endLine": 15,
+                    "endColumn": 8
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'my_kw' does not follow case convention",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 16,
+                    "startColumn": 5,
+                    "endLine": 16,
+                    "endColumn": 10
+                }
+            }
+        },
+        {
+            "ruleId": "NAME04",
+            "primaryLocation": {
+                "message": "Underscores in keyword name 'my_kw'",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 16,
+                    "startColumn": 5,
+                    "endLine": 16,
+                    "endColumn": 10
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'res02.keyword1' does not follow case convention",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 17,
+                    "startColumn": 5,
+                    "endLine": 17,
+                    "endColumn": 19
+                }
+            }
+        },
+        {
+            "ruleId": "DOC02",
+            "primaryLocation": {
+                "message": "Missing documentation in 'case03' test case",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 19,
+                    "startColumn": 1,
+                    "endLine": 19,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME07",
+            "primaryLocation": {
+                "message": "Test case 'case03' title does not start with capital letter",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 19,
+                    "startColumn": 1,
+                    "endLine": 19,
+                    "endColumn": 7
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'res02.keyword3' does not follow case convention",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 20,
+                    "startColumn": 5,
+                    "endLine": 20,
+                    "endColumn": 19
+                }
+            }
+        },
+        {
+            "ruleId": "NAME02",
+            "primaryLocation": {
+                "message": "Keyword name 'res01.keyword3' does not follow case convention",
+                "filePath": "suite01.robot",
+                "textRange": {
+                    "startLine": 21,
+                    "startColumn": 5,
+                    "endLine": 21,
+                    "endColumn": 19
+                }
+            }
+        },
+        {
+            "ruleId": "DOC03",
+            "primaryLocation": {
+                "message": "Missing documentation in suite",
+                "filePath": "__init__.robot",
+                "textRange": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "endLine": 1,
+                    "endColumn": 1
+                }
+            }
+        }
+    ]
+}
